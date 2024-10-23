@@ -592,3 +592,4 @@ String example = "This is the \"String\" class.";
 
 Now escape characters tell the compiler to escape **double quotes** and read the whole text.
 
+## Access Modifiers
