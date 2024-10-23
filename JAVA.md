@@ -593,3 +593,75 @@ String example = "This is the \"String\" class.";
 Now escape characters tell the compiler to escape **double quotes** and read the whole text.
 
 ## Access Modifiers
+
+Access modifiers are used to limit the access of class, variables, methods, constructors, setters and interface.
+
+There are 4 types of access modifiers 
+1. Default
+2. Private
+3. Protected
+4. Public
+
+### Default
+
+
+When a certain class is provided with the access modifier as default, Then it can be accessed anywhere within the package, Then all its variables, methods, constructors can be accessed.
+
+```java
+package defaultPackage;
+class Logger {
+    void message(){
+        System.out.println("This is a message");
+    }
+}
+```
+
+
+### Private 
+
+Firstly we cannot declare classed and interfaces private in Java. 
+When methods and variables are declared as private then it can be only accessed within the class. Not anywhere outside the class.
+
+```java
+class Data {
+    // private variable
+    private String name;
+}
+
+public class Main {
+    public static void main(String[] main){
+
+        // create an object of Data
+        Data d = new Data();
+
+        // access private variable and field from another class
+        d.name = "Programiz";
+    }
+}
+```
+
+The above code will throw an error
+
+### Public 
+
+When variables, classes, methods and so on are declared are public then it can be accessed from anywhere. The public access modifier has no restrictions.
+
+```java
+public class Animal {
+    public int legCount;
+    public void display() {
+        System.out.println("I am an animal.");
+        System.out.println("I have " + legCount + " legs.");
+    }
+}
+
+// Main.java
+public class Main {
+    public static void main( String[] args ) {
+        Animal animal = new Animal();
+        animal.legCount = 4;
+        animal.display();
+    }
+}
+```
+
