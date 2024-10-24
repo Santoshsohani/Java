@@ -807,12 +807,7 @@ When the super class and sub class has same method, then the method present in t
 ### Types of Inheritance
 
 1. **Single Inheritance** : Single sub class is extended by the single super class
-![[Single Inheritance.png]]2. **Multilevel Inheritance** : Single sub class is extended by the single super class, Now the sub class also acts as the super class for another sub class.
-
-![[Multilevel Inheritance.png]]
+2. **Multilevel Inheritance** : Single sub class is extended by the single super class, Now the sub class also acts as the super class for another sub class.
 3. **Hierarchical  Inheritance** : Here multiple sub classes extends single super class.
-![[Hierarchical Inheritance.png]]
-
 4. **Multilevel Inheritance** :  Here single sub class extends two or more super class
 
-![[Multiple Inheritance.png]]
