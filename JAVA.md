@@ -665,3 +665,92 @@ public class Main {
 }
 ```
 
+
+## This Keyword
+
+This keyword refers to the current object inside of a method or a constructor.
+
+This keyword is mainly used in various situations : 
+1. Ambiguity of the variables names 
+2. Getters and Setters
+3. Using this in constructor overloading 
+
+### Ambiguity of the variable names
+
+In Java two or more variables cannot have the same name inside the same scope. But for the arguments and instance variables it can be same.
+
+```java
+class Example {
+	int age;
+	String name;
+
+	Example(int age, String name){
+		this.age = age;
+		this.name = name;
+	}
+}
+
+public class Main{
+	public static void main(String[] args){
+		Example ex = new Example(20, 'Sansiro');
+	}
+}
+```
+
+Here in the above example, this keyword refers to the object *ex* and assign the instance variables age and name as *20* and *Sansiro*
+
+
+### Getters and Setters
+
+This keyword is widely used with *getters* and *setters* 
+
+```java
+class Example{
+	private int age;
+	void setAge (int age){
+		this.age = age;
+	}
+
+	int getAge(){
+		return this.age;
+	}
+}
+```
+
+### Used in Constructor Overloading
+
+In the case of constructor overloading there is another kind of this keyword is used. *this()*
+
+Here *this()* is used to call another constructor of the same class.
+
+```java
+class Example{
+	Example(int i, int j){
+		//  Logic
+	}
+	
+	Example(int i){
+		this(i,i)
+	}
+}
+```
+
+
+## Final Keyword
+
+The final keyword is used to declare constants, The final keyword can be used with variables, methods and classes.
+
+- Once the variables is declared using final keyword, The variables cannot be manipulated
+- Once the method is declared as final, The method cannot be overridden
+- Once the class is declared as final, The class cannot be extended.
+
+## Instance of operator
+
+The Instance of operator is used to check whether an object is instance of a class or not.
+
+```java
+objectName instanceof className;
+```
+
+If this condition is satisfied, It returns *true* else return *false*
+
