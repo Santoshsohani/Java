@@ -754,3 +754,65 @@ objectName instanceof className;
 
 If this condition is satisfied, It returns *true* else return *false*
 
+
+## Inheritance
+
+Inheritance is one of the main feature of object oriented programming, Inheritance is used to create to new class from a existing class. The new class created is called as sub-class and the existing class is called as super-class.
+
+```java
+class BankAccount {
+	protected String accountNumber;
+	protected double balance;
+
+	public BankAccount(String accountNumber, double intialBalance){
+		this.accountNumber = accountNumber;
+		this.balance = intialBalance;
+	}
+
+	public void deposit(double amount) { 
+	balance += amount; 
+	System.out.println("Deposited: " + amount); } 
+	
+	public void displayBalance() { 
+	System.out.println("Account Number: " + accountNumber + ", Balance: " + balance); 
+	}
+}
+
+class SavingsAccount extends BankAccount {
+	private double intrestRate;
+
+	public SavingsAccount(String accountNumber, double initialBalance, double interestRate) { 
+	super(accountNumber, initialBalance);
+	this.interestRate = interestRate; 
+	}
+
+	public void applyInterest() { 
+	double interest = balance * interestRate / 100; balance += interest; 
+	System.out.println("Interest applied: " + interest); 
+	}
+}
+```
+
+Here the super keyword is used to call the methods and constructors from the super class.
+
+Inheritance works only when present of *is-a* relation between super and sub class
+
+- Dog is a Animal
+- Car is a Vehicle
+
+When the super class and sub class has same method, then the method present in the super class is overridden by the sub class. This is called as *method overriding*
+
+- The Protected Members present in super class can also be accessed by the sub-class
+
+### Types of Inheritance
+
+1. **Single Inheritance** : Single sub class is extended by the single super class
+![[Single Inheritance.png]]2. **Multilevel Inheritance** : Single sub class is extended by the single super class, Now the sub class also acts as the super class for another sub class.
+
+![[Multilevel Inheritance.png]]
+3. **Hierarchical  Inheritance** : Here multiple sub classes extends single super class.
+![[Hierarchical Inheritance.png]]
+
+4. **Multilevel Inheritance** :  Here single sub class extends two or more super class
+
+![[Multiple Inheritance.png]]
