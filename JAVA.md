@@ -811,3 +811,234 @@ When the super class and sub class has same method, then the method present in t
 3. **Hierarchical  Inheritance** : Here multiple sub classes extends single super class.
 4. **Multilevel Inheritance** :  Here single sub class extends two or more super class
 
+## Method Overriding
+
+Method Overriding is a principle where method present in the super class overrides the method present in the sub-class. 
+
+```java
+class Animal{
+	proctected void walks() {
+		System.out.println("Animal Walks");
+	}
+}
+
+class Dog extends Animal{
+	@Override
+	proctected void walks() {
+		System.out.println("Dog Walks");
+	}
+}
+```
+
+In the above example the class Dog is inherited by the Animal class, when an object is created from the Dog class, the method is overridden.
+
+- But we can access the method present in the super class using the super keyword.
+
+Here also in the example we have used the annotation *@Override* it is not mandatory to use the annotation but if used, should follow all the rules of method overriding
+
+### Rules of Method Overriding
+
+- The method in both the classes should be of the same name, same return type and same parameters list
+- We cannot override method declared as final or static
+- Abstract methods of super class should be override
+
+### Access Specifiers in method overriding
+
+There can be different access specifiers for methods in super class and sub class, But only condition is that the access specifier in the sub class should have larger access than the super class.
+
+For example for a method present in super class have access modifier of *protected* than the access specifier of the sub class should be either of *private* or *protected*
+
+## Abstract Class and Abstract Methods
+
+Abstract classes are the classes which cannot be instantiated, it is declared using *abstract* keyword. The classes declared using abstract keyword may or may not have abstract methods.
+
+Abstract methods on the other hand does not contain any body. Its just the declaration. Abstract methods are called by the object of sub-class, If a method is declared as abstract then its class should also be abstract in nature.
+
+```java
+abstract class Bike {
+    abstract public void brake();  
+}
+
+class MountainBike extends Bike {
+    public void brake() {
+        System.out.println("Breaking...");
+    }
+}
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        MountainBike Mb = new MountainBike();
+        Mb.brake();  
+    }
+}
+```
+
+The constructor of Abstract methods can be used in the sub-class using the *super()* method
+
+
+## Interface
+
+- Interface is a abstract class where uses *interface* keyword to declare the interface, It Consists of various method definition.
+- One can create a class by implementing an interface by providing all the definition of the methods defined in the interface.
+- It is done using *implements* keyword
+- Similar to class interface also can extend each other
+- Single Interface can extend multiple interfaces as well
+
+```java
+interface Bike {
+    public void brake();
+}
+
+interface BikeWithHardware extends Bike {
+    public void wheels();
+}
+
+class MountainBike implements BikeWithHardware{
+    public void brake() {
+        System.out.println("Breaking...");
+        }   
+    public void wheels() {
+        System.out.println("Bike has 2 Wheels...");
+    }
+}
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        MountainBike Mb = new MountainBike();
+        Mb.brake();  
+        Mb.wheels();
+    }
+}
+```
+
+### Default methods in interface
+
+- One can provide default methods with its implementation inside of an interface using *default* keyword
+
+```java
+interface Bike {
+    public void brake();
+    public default void horn(){
+        System.out.println("Sound Horn..");
+    }
+}
+
+interface BikeWithHardware extends Bike {
+    public void wheels();
+}
+
+class MountainBike implements BikeWithHardware{
+    public void brake() {
+        System.out.println("Breaking...");
+        }   
+    public void wheels() {
+        System.out.println("Bike has 2 Wheels...");
+    }
+}
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        MountainBike Mb = new MountainBike();
+        Mb.brake();  
+        Mb.wheels();
+        Mb.horn();
+    }
+}
+```
+
+## Abstraction 
+
+Abstraction is one of the key feature of Object Oriented Programming, The main feature of Abstraction is to hide the unnecessary logic implementation, but provide only the feature or functionality to the user.
+
+Think Abstraction as a Car every car has the functionality of Breaking, But instead of understanding how the internal working of breaking works, Just focus on what breaks does.
+
+Abstraction can be implemented using two ways : 
+1. Using Abstract Class
+2. Using Interface
+
+### Abstract Class
+
+```java
+abstract class Payment {
+ abstract public void makePayment();
+}
+
+class CreditCard extends Payment {
+    public void makePayment(){
+        System.out.println("Payment Made Using Credit Card");
+    }
+}
+
+class Upi extends Payment {
+    public void makePayment(){
+        System.out.println("Payment Made Using Credit Upi");
+    }
+}
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        CreditCard card = new CreditCard();
+        Upi upi = new Upi();
+        
+        card.makePayment();
+        upi.makePayment();
+    }
+}
+```
+
+
+### Interface
+
+```java
+ interface Payment {
+  public void makePayment();
+}
+
+class CreditCard implements Payment {
+    public void makePayment(){
+        System.out.println("Payment Made Using Credit Card");
+    }
+}
+
+class Upi implements Payment {
+    public void makePayment(){
+        System.out.println("Payment Made Using Credit Upi");
+    }
+}
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        CreditCard card = new CreditCard();
+        Upi upi = new Upi();
+        
+        card.makePayment();
+        upi.makePayment();
+    }
+}
+```
+
+### Why interface were introduced when there was already abstract class
+
+1. To Support Multiple Inheritance
+2. To avoid partial implementation of methods
+
+### Multiple Inheritance
+
+```java
+interface Payable {
+    void processPayment();
+}
+
+interface Refundable {
+    void processRefund();
+}
+
+class Transaction implements Payable, Refundable {
+    public void processPayment() {
+        System.out.println("Processing payment...");
+    }
+    public void processRefund() {
+        System.out.println("Processing refund...");
+    }
+}
+```
