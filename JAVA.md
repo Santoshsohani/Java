@@ -1042,3 +1042,127 @@ class Transaction implements Payable, Refundable {
     }
 }
 ```
+
+## Polymorphism
+
+Polymorphism is one of the core principles of object oriented programming, Polymorphism generally means which is present in multiple forms.
+
+There are three ways in which polymorphism can be implemented in Java.
+1. Method Overriding (Run Time Polymorphism)
+2. Method Overloading (Compile Time Polymorphism)
+3. Operator Overloading
+
+### Method Overriding
+
+The Method overriding is the phenomena where super class and sub class have the same name, But behave differently under different circumstances. Hence we can see polymorphism here 
+
+```java
+class Payment{
+	public void makePayment(){
+		System.out.println("Making Payment...");
+	}
+}
+
+class CreditCard extends Payment{
+	@Override
+	public void makePayment(){
+		System.out.println("Making Payment Using CreditCard");
+	}
+}
+
+class UPI extends Payment{
+	@Override
+	public void makePayment(){
+		System.out.println("Making Payment Using UPI");
+	}
+}
+```
+
+Here in the above example the *CreditCard* and *UPI* extends the *Payment* class, Here the method *makePayment* is polymorphic and is present in various forms.
+
+Method to execute is decided during the runtime, hence it is called as runtime polymorphism 
+
+### Method Overloading
+
+Method overloading is a form of compile-time polymorphism where multiple methods in the same class have the same name but differ in their parameters (type, number, or both). The appropriate method is determined by the compiler based on the method signature, making it compile-time polymorphism.
+
+Here is an example:
+
+```java
+class Payment {
+    public void makePayment(int amount) {
+        System.out.println("Making a Payment of " + amount);
+    }
+
+    public void makePayment(int amount, String currency) {
+        System.out.println("Making a Payment of " + amount + " " + currency);
+    }
+
+    public void makePayment(int amount, String currency, String method) {
+        System.out.println("Making a Payment of " + amount + " " + currency + " using " + method);
+    }
+}
+```
+
+In the above example, the `makePayment` method is overloaded to handle different types of payment requests:
+
+1. **Single Parameter**: `makePayment(int amount)` for a basic payment.
+2. **Two Parameters**: `makePayment(int amount, String currency)` for specifying the currency.
+3. **Three Parameters**: `makePayment(int amount, String currency, String method)` for specifying both currency and payment method.
+
+### Operator Overloading
+
+The another method of polymorphism is Operator overloading, For example the same *+* operator can be used for addition and string concatenation as well.
+
+
+## Encapsulation
+
+Encapsulation is one of the feature of Object Oriented Programming, Which provides a way to bundle all the variables and methods inside a single class. 
+
+- Using Encapsulation data hiding can be achieved.
+
+```java
+class AccountDetails {
+	int accountNumber;
+	String accountType;
+
+	AccountDetails(int accountNumber,String accountType){
+		this.accountNumber = accountNumber;
+		this.accountType = accountType;
+	}
+
+	public void getAccountDetails(){
+		// Logic
+	}
+}
+```
+
+Here in the above example the class *AccountDetails* has all its data members encapsulated in a single class. This is Encapsulation.
+
+### Data Hiding Using Encapsulation
+
+Data Hiding can be performed using Encapsulation, which prevents the external classes to access the private data members.
+
+```java
+class AccountDetails {
+	private int accountNumber;
+	private String accountType;
+
+	AccountDetails(int accountNumber,String accountType){
+		this.accountNumber = accountNumber;
+		this.accountType = accountType;
+	}
+
+	public void getAccountDetails(){
+		// Logic
+	}
+	
+	public int getAccountNumber(){
+		return this.accountNumber;
+	} 
+}
+```
+
+Here in the above example, The Data member *accountNumber* is made private and can be only accessed using the *getAccountDetails()* method,
+This is how *Data Hiding* is achieved using Encapsulation.
+
